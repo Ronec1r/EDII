@@ -47,12 +47,10 @@ public class Nodo {
     }
 
     public Nodo getPai(){
-        try{
-            return this.pai;
-        }catch (Exception e){
-            System.out.println("É a raiz");
-            return null;
+        if (this.pai==null){
+            throw new RuntimeException("É a raiz");
         }
+        return this.pai;
     }
 
     public int grau(){
