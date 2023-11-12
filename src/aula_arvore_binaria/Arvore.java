@@ -43,6 +43,42 @@ public class Arvore {
         return nodo;
     }
 
+    public void removeNodo(NodoAB nodo){
+        //Remove sem mover os nodos filhos
+        if(nodo.eRaiz()){
+            this.raiz=null;
+        }else{
+            NodoAB pai = nodo.getPai();
+            if(pai.getNodoesquerdo()==nodo){
+                pai.setNodoesquerdo(null);
+            }else{
+                pai.setNododireito(null);
+            }
+        }
+        nodo.setPai(null);
+        tamanho--;
+    }
+
+    public void remove(NodoAB nodo){
+        //Remove alocando os nodos filhos
+        NodoAB pai = nodo.getPai();
+        if(pai.getNodoesquerdo()==nodo){
+            pai.setNodoesquerdo(nodo.getNodoesquerdo());
+            if(pai.getNododireito()==null){
+                pai.setNododireito(nodo.getNododireito());
+            }
+        }
+        if(pai.getNododireito()==nodo){
+            pai.setNododireito(nodo.getNododireito());
+            if(pai.getNodoesquerdo()==null){
+                pai.setNodoesquerdo(nodo.getNodoesquerdo());
+            }
+        }
+        nodo.setPai(null);
+        tamanho--;
+    }
+
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

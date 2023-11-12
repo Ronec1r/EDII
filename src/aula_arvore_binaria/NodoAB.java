@@ -42,5 +42,18 @@ public class NodoAB {
         return nododireito;
     }
 
+    public boolean eRaiz(){
+        if (this.getPai()==null){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean eFolha(){
+        if ((this.getNodoesquerdo()==null) && (this.getNododireito()==null)){
+            return true;
+        }
+        return false;
+    }
 
 }

@@ -1,7 +1,5 @@
 package aula_arvore_binaria;
 
-import aula_arvore.Nodo;
-
 public class Programa {
     public static void main(String[] args){
         Arvore arvore = new Arvore();
@@ -19,6 +17,11 @@ public class Programa {
         System.out.println(arvore.getRaiz());
         System.out.println(arvore);
 
+        System.out.println(div.eFolha());
+        System.out.println(raiz.eRaiz());
+
+        arvore.remove(prod);
+        System.out.println(arvore);
 
     }
 }
