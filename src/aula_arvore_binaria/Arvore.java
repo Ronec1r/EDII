@@ -78,21 +78,51 @@ public class Arvore {
         tamanho--;
     }
 
-    public void travessiaPreOrdem(NodoAB nodo){
-        System.out.println(nodo.getInfo());
+    public NodoAB busca(Object info){
+        Visitante visitante = new Visitante(info);
+        this.travessiaPreOrdem(this.raiz, visitante);
+        return visitante.getResultado();
+    }
+
+    public void travessiaPreOrdem(NodoAB nodo,Visitante visitante){
+        //System.out.println(nodo.getInfo());
+        if(visitante!=null) {
+            visitante.setResultado(nodo);
+        }
         if(nodo.getNodoesquerdo()!=null){
-            travessiaPreOrdem(nodo.getNodoesquerdo());
+            travessiaPreOrdem(nodo.getNodoesquerdo(), visitante);
         }
         if(nodo.getNododireito()!=null){
-            travessiaPreOrdem(nodo.getNododireito());
+            travessiaPreOrdem(nodo.getNododireito(), visitante);
         }
     }
-    /*public void travessiaPosOrdem(){
 
+
+    public void travessiaPosOrdem(NodoAB nodo,Visitante visitante){
+        if(nodo.getNodoesquerdo()!=null){
+            travessiaPosOrdem(nodo.getNodoesquerdo(), visitante);
+        }
+        if(nodo.getNododireito()!=null){
+            travessiaPosOrdem(nodo.getNododireito(), visitante);
+        }
+        //System.out.println(nodo.getInfo());
+        if(visitante!=null) {
+            visitante.setResultado(nodo);
+        }
     }
-    public void travessiaEmOrdem(){
 
-    }*/
+    public void travessiaEmOrdem(NodoAB nodo, Visitante visitante ){
+        if(nodo.getNodoesquerdo()!=null){
+            travessiaEmOrdem(nodo.getNodoesquerdo(), visitante);
+        }
+        //System.out.println(nodo.getInfo());
+        if (visitante!=null){
+            visitante.setResultado(nodo);
+        }
+        if(nodo.getNododireito()!=null){
+            travessiaEmOrdem(nodo.getNododireito(), visitante);
+        }
+    }
 
     @Override
     public String toString() {

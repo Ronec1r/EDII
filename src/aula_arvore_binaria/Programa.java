@@ -14,13 +14,21 @@ public class Programa {
         arvore.inserirNodoDireito("D", div);
 
         System.out.println(arvore.getsize());
+        System.out.println("--------------------");
         System.out.println(arvore.getRaiz());
+        System.out.println("--------------------");
         System.out.println(arvore);
-
+        System.out.println("--------------------");
         System.out.println(div.eFolha());
+        System.out.println("--------------------");
         System.out.println(raiz.eRaiz());
-
-
-        arvore.travessiaPreOrdem(raiz);
+        System.out.println("--------------------");
+        System.out.println(arvore.busca("C"));
+        System.out.println("--------------------");
+        arvore.travessiaEmOrdem(raiz, null);
+        System.out.println("--------------------");
+        arvore.travessiaPosOrdem(raiz, null);
+        System.out.println("--------------------");
+        arvore.travessiaPreOrdem(raiz, null);
     }
 }
