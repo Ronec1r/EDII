@@ -20,8 +20,7 @@ public class Programa {
         System.out.println(div.eFolha());
         System.out.println(raiz.eRaiz());
 
-        arvore.remove(prod);
-        System.out.println(arvore);
 
+        arvore.travessiaPreOrdem(raiz);
     }
 }

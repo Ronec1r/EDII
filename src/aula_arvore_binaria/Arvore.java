@@ -78,6 +78,21 @@ public class Arvore {
         tamanho--;
     }
 
+    public void travessiaPreOrdem(NodoAB nodo){
+        System.out.println(nodo.getInfo());
+        if(nodo.getNodoesquerdo()!=null){
+            travessiaPreOrdem(nodo.getNodoesquerdo());
+        }
+        if(nodo.getNododireito()!=null){
+            travessiaPreOrdem(nodo.getNododireito());
+        }
+    }
+    /*public void travessiaPosOrdem(){
+
+    }
+    public void travessiaEmOrdem(){
+
+    }*/
 
     @Override
     public String toString() {
