@@ -25,10 +25,13 @@ public class Programa {
         System.out.println("--------------------");
         System.out.println(arvore.busca("C"));
         System.out.println("--------------------");
-        arvore.travessiaEmOrdem(raiz, null);
-        System.out.println("--------------------");
         arvore.travessiaPosOrdem(raiz, null);
         System.out.println("--------------------");
-        arvore.travessiaPreOrdem(raiz, null);
+        System.out.println(arvore);
+        System.out.println("-------------------");
+        Arvore arvore2 = arvore.copia();
+        arvore2.travessiaPosOrdem(raiz, null);
+        System.out.println("-------------------");
+        System.out.println(arvore2);
     }
 }

@@ -8,7 +8,7 @@ public class Arvore {
         if (raiz!=null){
             throw new RuntimeException("Raiz já existe!");
         }
-        raiz = new NodoAB(info);
+        this.raiz = new NodoAB(info);
         tamanho++;
         return raiz;
     }
@@ -84,6 +84,27 @@ public class Arvore {
         return visitante.getResultado();
     }
 
+    public Arvore copia(){
+        Arvore nova_arvore = new Arvore();
+        nova_arvore.criaRaiz(this.raiz.getInfo());
+        this.copiaTravessiaPreOrdem(this.raiz, nova_arvore, nova_arvore.raiz);
+        return nova_arvore;
+    }
+
+    private void copiaTravessiaPreOrdem(NodoAB nodo, Arvore arvore, NodoAB pai){
+        if(nodo.getNodoesquerdo()!=null){
+            arvore.inserirNodoEsquerdo(nodo.getNodoesquerdo().getInfo(), pai);
+            pai = pai.getNodoesquerdo();
+            copiaTravessiaPreOrdem(nodo.getNodoesquerdo(),arvore,pai);
+        }
+        pai = pai.getPai();
+        if(nodo.getNododireito()!=null){
+            arvore.inserirNodoDireito(nodo.getNododireito().getInfo(), pai);
+            pai = pai.getNododireito();
+            copiaTravessiaPreOrdem(nodo.getNododireito(),arvore, pai);
+        }
+    }
+
     public void travessiaPreOrdem(NodoAB nodo,Visitante visitante){
         //System.out.println(nodo.getInfo());
         if(visitante!=null) {
@@ -105,7 +126,7 @@ public class Arvore {
         if(nodo.getNododireito()!=null){
             travessiaPosOrdem(nodo.getNododireito(), visitante);
         }
-        //System.out.println(nodo.getInfo());
+        System.out.println(nodo.getInfo());
         if(visitante!=null) {
             visitante.setResultado(nodo);
         }
